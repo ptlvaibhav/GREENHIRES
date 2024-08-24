@@ -1,2 +1,2 @@
 # AgriLink
-    Represents the seamless flow of trade and employment opportunities within the agriculture sector.
+    Emphasizes connecting farmers, merchants, and landlords in the agricultural ecosystem.
