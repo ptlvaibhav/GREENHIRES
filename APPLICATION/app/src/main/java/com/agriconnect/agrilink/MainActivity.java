@@ -1,24 +1,43 @@
 package com.agriconnect.agrilink;
 
-import android.os.Bundle;
+//import android.os.Bundle;
+//
+//import androidx.activity.EdgeToEdge;
+//import androidx.appcompat.app.AppCompatActivity;
+//import androidx.core.graphics.Insets;
+//import androidx.core.view.ViewCompat;
+//import androidx.core.view.WindowInsetsCompat;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import android.os.Bundle;
+import android.os.Handler;
+import android.content.Intent;
+import android.view.WindowManager;
+import android.widget.ImageView;
 
-public class MainActivity extends AppCompatActivity {
 
+
+public class MainActivity extends AppCompatActivity{
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+        // Setting the FLAGs
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        // Objects Creation
+        ImageView AppLogo = findViewById(R.id.SplashScreen_Logo);
+        AppLogo.setImageResource(R.drawable.logo);
+
+        //(Use of)Handler : to Schedule the code that should run in Future
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run(){
+                Intent intent = new Intent(MainActivity.this, Login.class);
+                startActivity(intent);
+                finish();
+            }
+        },5000);
+
+
     }
 }

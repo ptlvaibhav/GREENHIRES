@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">AgroLink</string>
+    <string name="Login_text">Login</string>
+    <string name="Login_text2">Log in</string>
+    <string name="Email_phn">Enter E-mail / Phone No.</string>
+    <string name="Login_desc">Sign In to continue.</string>
+    <string name="Login_Username">User Name</string>
+    <string name="Login_Password">Password</string>
+    <string name="Login_forget">Forgot Password ?</string>
+    <string name="Login_signup">Sign Up</string>
+    <string name="Pass_text">Enter Password</string>
+
 </resources>
