@@ -2,6 +2,7 @@
     <string name="app_name">AgroLink</string>
     <string name="Login_text">Login</string>
     <string name="Login_text2">Log in</string>
+    <string name="Submit_btn">Submit</string>
     <string name="Email_phn">Enter E-mail / Phone No.</string>
     <string name="Login_desc">Sign In to continue.</string>
     <string name="Login_Username">User Name</string>
@@ -9,5 +10,22 @@
     <string name="Login_forget">Forgot Password ?</string>
     <string name="Login_signup">Sign Up</string>
     <string name="Pass_text">Enter Password</string>
-
+    <string name="Name_text">Enter your Name</string>
+    <string name="Email_text">Enter your Email</string>
+    <string name="Pass2_text">Enter your Password</string>
+    <string name="Phone_text">Enter your Phone Number</string>
+    <string name="Role">Want to Register As ?</string>
+    <string name="Create_acc_text">Create new\n\u00A0\u00A0\u00A0Account</string>
+    <string name="Already_acc_text">Already Registered ? Log In Here</string>
+    <string name="Name">Name</string>
+    <string name="Email">Email</string>
+    <string name="Phone_No">Phone No.</string>
+    <string name="Pass">Password</string>
+    <string-array name="roles_array">
+        <item>Select your role</item>
+        <item>Farmer</item>
+        <item>Merchant/Dealer</item>
+        <item>Landlord</item>
+        <item>Industry</item>
+    </string-array>
 </resources>
