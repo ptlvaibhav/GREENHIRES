@@ -5,8 +5,8 @@
     android:id="@+id/LoginActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login"
-    android:background="@color/drkgreen_clr">
+    tools:context=".LoginActivity"
+    android:background="@color/Pista_clr">
     <ImageView
         android:id="@+id/Login_Logo"
         android:layout_width="160dp"

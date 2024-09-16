@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">AgroLink</string>
+    <string name="app_name">AgriLink</string>
     <string name="Login_text">Login</string>
     <string name="Login_text2">Log in</string>
     <string name="Submit_btn">Submit</string>
+    <string name="nxt_btn">Next</string>
     <string name="Email_phn">Enter E-mail / Phone No.</string>
     <string name="Login_desc">Sign In to continue.</string>
     <string name="Login_Username">User Name</string>
@@ -21,10 +22,14 @@
     <string name="Email">Email</string>
     <string name="Phone_No">Phone No.</string>
     <string name="Pass">Password</string>
+    <string name="donthaveacc">Dont\'t have Account ?</string>
+    <string name="Forgottext1"> FORG0T </string>
+    <string name="Forgottext2"> Password </string>
+    <string name="Forgottext3"> Provide your account\'s registered email for which you want to reset your password! </string>
     <string-array name="roles_array">
         <item>Select your role</item>
         <item>Farmer</item>
-        <item>Merchant/Dealer</item>
+        <item>Merchant</item>
         <item>Landlord</item>
         <item>Industry</item>
     </string-array>
