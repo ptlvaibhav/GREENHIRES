@@ -17,14 +17,14 @@
     <RelativeLayout
         android:id="@+id/rectangular_container"
         android:layout_width="match_parent"
-        android:layout_height="800dp"
+        android:layout_height="match_parent"
         android:layout_marginTop="60dp"
         android:background="@drawable/rectangle_container2"
-        android:padding="20dp">
+        android:padding="30dp">
     <ImageView
         android:id="@+id/locklogo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/lock2"
         android:layout_margin="30dp"/>
@@ -33,7 +33,7 @@
         android:id="@+id/forgot1"
         android:layout_width="190dp"
         android:layout_height="100dp"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:text="@string/Forgottext1"
         android:layout_below="@id/locklogo"
@@ -46,7 +46,7 @@
         android:id="@+id/forgot2"
         android:layout_width="240dp"
         android:layout_height="100dp"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:text="@string/Forgottext2"
         android:layout_below="@id/locklogo"
@@ -60,7 +60,7 @@
         android:id="@+id/forgot3"
         android:layout_width="300dp"
         android:layout_height="70dp"
-        android:textSize="12sp"
+        android:textSize="10sp"
         android:text="@string/Forgottext3"
         android:layout_below="@id/locklogo"
         android:layout_centerHorizontal="true"
@@ -70,10 +70,10 @@
         android:textColor="@color/black" />
     <EditText
         android:id="@+id/femail"
-        android:layout_width="430dp"
-        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:ems="18"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="-10dp"
         android:hint="@string/Email_text"
         android:layout_below="@id/forgot3"
         android:inputType="text"
@@ -85,7 +85,7 @@
             android:id="@+id/nxtbtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:padding="12dp"
             android:text="@string/nxt_btn"
             android:textStyle="bold"
@@ -98,16 +98,16 @@
             android:layout_below="@id/nxtbtn"
             android:text="@string/donthaveacc"
             android:layout_centerHorizontal="true"
-            android:layout_margin="25dp"
-            android:textSize="15sp"/>
+            android:layout_margin="20dp"
+            android:textSize="13sp"/>
         <TextView
             android:id="@+id/Signup_txt2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/Signup_txt"
             android:text="@string/Login_signup"
-            android:layout_marginTop="-25dp"
-            android:textSize="15sp"
+            android:layout_marginTop="-15dp"
+            android:textSize="13sp"
             android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>

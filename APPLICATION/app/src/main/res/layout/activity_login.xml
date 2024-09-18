@@ -5,14 +5,14 @@
     android:id="@+id/LoginActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".Login"
     android:background="@color/Pista_clr">
     <ImageView
         android:id="@+id/Login_Logo"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="60dp"
         android:src="@drawable/logo"
         android:background="@drawable/round_image"
         android:scaleType="centerCrop"
@@ -22,9 +22,9 @@
         android:id="@+id/rectangular_container"
         android:layout_width="match_parent"
         android:layout_height="800dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="250dp"
         android:background="@drawable/rectangle_container"
-        android:padding="20dp">
+        android:padding="40dp">
 
         <TextView
             android:id="@+id/loginTxt"
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="@string/Login_text"
-            android:textSize="50sp"
+            android:textSize="40sp"
             android:textStyle="bold"/>
 
         <TextView
@@ -42,23 +42,23 @@
             android:layout_below="@id/loginTxt"
             android:text="@string/Login_desc"
             android:layout_centerHorizontal="true"
-            android:textSize="15sp"/>
+            android:textSize="13sp"/>
 
         <TextView
             android:id="@+id/Login_Uname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/Login_desc"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:text="@string/Login_Username"
-            android:textSize="15sp"/>
+            android:textSize="13sp"/>
 
         <EditText
             android:id="@+id/Login_Unme"
             android:layout_width="420dp"
             android:layout_height="60dp"
             android:ems="18"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="3dp"
             android:hint="@string/Email_phn"
             android:layout_below="@id/Login_Uname"
             android:inputType="text"
@@ -70,16 +70,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/Login_Unme"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:text="@string/Login_Password"
-            android:textSize="15sp"/>
+            android:textSize="13sp"/>
 
         <EditText
             android:id="@+id/Login_Upas"
             android:layout_width="420dp"
             android:layout_height="60dp"
             android:ems="18"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="3dp"
             android:hint="@string/Pass_text"
             android:layout_below="@id/Login_Upass"
             android:inputType="textPassword"
@@ -90,8 +90,8 @@
             android:id="@+id/loginbtn"
             android:layout_width="420dp"
             android:layout_height="60dp"
-            android:layout_marginTop="20dp"
-            android:padding="12dp"
+            android:layout_marginTop="15dp"
+            android:padding="10dp"
             android:text="@string/Login_text2"
             android:textStyle="bold"
             android:background="@drawable/loginbtn"
@@ -103,9 +103,9 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/loginbtn"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:text="@string/Login_forget"
-            android:textSize="15sp"/>
+            android:textSize="13sp"/>
 
         <TextView
             android:id="@+id/Login_signup"
@@ -113,9 +113,9 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/Login_forgot"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:text="@string/Login_signup"
-            android:textSize="15sp" />
+            android:textSize="13sp" />
 
     </RelativeLayout>
 </RelativeLayout>
