@@ -5,47 +5,57 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MerchantActivity extends AppCompatActivity {
-    SharedPreferences preferences;
-    Intent intent;
+    private EditText searchBar;
+    private ImageView menu,logout,scrop,gethire,aplytender, chats,setng, profile;
+    private Intent intent;
+    private SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_merchant);
+        //initalization of the elements
+        menu = findViewById(R.id.menu);
+        searchBar = findViewById(R.id.searchBar);
+        logout = findViewById(R.id.btnLogOut);
+        scrop = findViewById(R.id.list1);
+        gethire = findViewById(R.id.list2);
+        aplytender = findViewById(R.id.list3);
+        chats = findViewById(R.id.list4);
+        setng = findViewById(R.id.list5);
+        profile = findViewById(R.id.list6);
 
-        TextView result = findViewById(R.id.resultView);
-        Button btnLogOut = findViewById(R.id.btnLogOut);
-
-        // Retrieve SharedPreferences for user details
-        preferences = getSharedPreferences("User_details", MODE_PRIVATE);
-
-        // Retrieve the stored username using the correct key
-        String storedUsername = preferences.getString("UserName", null);
-
-        // If username is available, display it; otherwise, display a default message
-        if (storedUsername != null) {
-            result.setText("Hello, " + storedUsername);
-        } else {
-            result.setText("Hello, User");
-        }
-
-        btnLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.clear();
-                editor.commit();
-                intent = new Intent(MerchantActivity.this, Login.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
-            }
+        scrop.setOnClickListener(v -> {
+            intent = new Intent(MerchantActivity.this, SellCropActivity.class);
+            startActivity(intent);
+        });
+        gethire.setOnClickListener(v -> {
+            intent = new Intent(MerchantActivity.this,GetHiredActivity.class);
+            startActivity(intent);
+        });
+        aplytender.setOnClickListener(v -> {
+            intent = new Intent(MerchantActivity.this, ApplyTenderActivity.class);
+            startActivity(intent);
+        });
+        chats.setOnClickListener(v -> {
+            intent = new Intent(MerchantActivity.this, ChatsActivity.class);
+            startActivity(intent);
+        });
+        setng.setOnClickListener(v -> {
+            intent = new Intent(MerchantActivity.this, SettingsActivity.class);
+            startActivity(intent);
+        });
+        profile.setOnClickListener(v -> {
+            intent = new Intent(MerchantActivity.this, FprofileActivity.class);
+            startActivity(intent);
         });
     }
 }

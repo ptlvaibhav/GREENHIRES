@@ -7,10 +7,10 @@
         </shape>
     </item>
     <item
-        android:top="300dp"
-        android:bottom="300dp"
-        android:right="300dp"
-        android:left="300dp">
+        android:top="10dp"
+        android:bottom="10dp"
+        android:right="10dp"
+        android:left="10dp">
         <bitmap
             android:src="@drawable/handshake"
             android:gravity="center" />

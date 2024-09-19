@@ -7,10 +7,10 @@
         </shape>
     </item>
     <item
-        android:top="300dp"
-        android:bottom="300dp"
-        android:right="300dp"
-        android:left="300dp">
+        android:top="50dp"
+        android:bottom="50dp"
+        android:right="50dp"
+        android:left="50dp">
         <bitmap
             android:src="@drawable/form"
             android:gravity="center" />

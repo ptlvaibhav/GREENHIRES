@@ -1,6 +1,7 @@
 package com.agriconnect.agrilink;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -11,7 +12,8 @@ public class FarmerActivity extends AppCompatActivity
 {
     private EditText searchBar;
     private ImageView menu,logout,scrop,gethire,aplytender, chats,setng, profile;
-    Intent intent;
+    private Intent intent;
+    private SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

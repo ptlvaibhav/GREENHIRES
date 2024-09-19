@@ -6,7 +6,9 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,26 +26,36 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText etName, etEmail, etPhone, etPassword;
     private Spinner roleSpinner;
     private Button btnSignUp;
+    private ImageView backbtn;
+    private TextView backlogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        // Bind views
         etName = findViewById(R.id.regisnamefield);
         etEmail = findViewById(R.id.regisEmailfield);
         etPhone = findViewById(R.id.regisPhonefield);
         etPassword = findViewById(R.id.regisPassfield);
-        roleSpinner = findViewById(R.id.roleSpinner);  // Spinner for role selection
+        roleSpinner = findViewById(R.id.roleSpinner);
         btnSignUp = findViewById(R.id.loginbtn);
+        backbtn = findViewById(R.id.backImage);
+        backlogin = findViewById(R.id.loghere);
 
-        // Set up the Spinner with the roles
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.roles_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         roleSpinner.setAdapter(adapter);
 
+        backbtn.setOnClickListener(v->{
+            Intent intent = new Intent(SignUpActivity.this, Login.class);
+            startActivity(intent);
+        });
+        backlogin.setOnClickListener(v->{
+            Intent intent = new Intent(SignUpActivity.this, Login.class);
+            startActivity(intent);
+        });
         btnSignUp.setOnClickListener(v -> {
             String name = etName.getText().toString();
             String email = etEmail.getText().toString();
@@ -81,7 +93,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onResponse(Call<AirtableResponse> call, Response<AirtableResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     Log.d("Success", "User created with records: " + response.body().getRecords());
-                    Toast.makeText(SignUpActivity.this, "Sign-up successful!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Registered successfully!", Toast.LENGTH_SHORT).show();
 
                     // Navigate to login page
                     Intent intent = new Intent(SignUpActivity.this, Login.class);

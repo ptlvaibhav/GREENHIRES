@@ -81,7 +81,7 @@ public class Login extends AppCompatActivity {
 
                         SharedPreferences.Editor editor = preference.edit();
                         editor.putString("UserName", userName);
-                        editor.putString("Password", password);
+                        //editor.putString("Password", password);
                         editor.putString("Role", role);
                         editor.apply();
 
