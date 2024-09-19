@@ -12,7 +12,7 @@
         android:right="30dp"
         android:left="30dp">
         <bitmap
-            android:src="@drawable/postjob"
+            android:src="@drawable/digging"
             android:gravity="center" />
     </item>
 </layer-list>

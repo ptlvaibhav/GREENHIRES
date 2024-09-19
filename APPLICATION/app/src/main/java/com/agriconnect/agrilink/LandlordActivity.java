@@ -27,7 +27,7 @@ public class LandlordActivity extends AppCompatActivity {
         //initalization of the elements
         menu = findViewById(R.id.menu);
         searchBar = findViewById(R.id.searchBar);
-        logout = findViewById(R.id.log_out);
+        logout = findViewById(R.id.btnLogOut);
         scrop = findViewById(R.id.list1);
         gethire = findViewById(R.id.list2);
         aplytender = findViewById(R.id.list3);
