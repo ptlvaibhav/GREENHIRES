@@ -31,7 +31,6 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:padding="10dp"
-            android:inputType="text"
             android:hint="⌕ Search"
             android:background="@drawable/searchbg"/>
 
@@ -52,6 +51,8 @@
         android:layout_below="@id/linearlayout"
         android:layout_centerInParent="true"
         android:layout_marginTop="15dp"
+        android:text="Hello, ABC!"
+        android:fontFamily="@font/playfairdisplay_medium"
         android:textSize="20dp"
         android:textColor="@color/white"/>
 
@@ -77,7 +78,7 @@
             android:id="@+id/list2"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/gethire"
+            android:src="@drawable/postj"
             android:layout_margin="10dp"
             android:layout_toRightOf="@id/list1"
             android:elevation="8dp"
