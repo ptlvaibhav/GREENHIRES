@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/light_white">
     <ImageView
         android:id="@+id/uimage"
         android:layout_width="60dp"
@@ -15,7 +16,8 @@
         android:layout_height="wrap_content"
         android:text="Name :"
         android:textSize="13sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
 
     <TextView
         android:layout_toRightOf="@id/uimage"
