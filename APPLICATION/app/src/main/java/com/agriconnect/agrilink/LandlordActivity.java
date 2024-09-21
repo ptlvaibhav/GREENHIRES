@@ -40,7 +40,7 @@ public class LandlordActivity extends AppCompatActivity {
             startActivity(intent);
         });
         gethire.setOnClickListener(v -> {
-            intent = new Intent(LandlordActivity.this,GetHiredActivity.class);
+            intent = new Intent(LandlordActivity.this,GetworkerActivity.class);
             startActivity(intent);
         });
         aplytender.setOnClickListener(v -> {
