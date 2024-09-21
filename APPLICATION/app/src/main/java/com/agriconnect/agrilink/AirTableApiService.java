@@ -8,10 +8,10 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface AirTableApiService {
-    @Headers("Authorization: Bearer pat0h7EQw0GwMJ7G8.08464c93c7705eff3069e37f7a7749ba3f95cd0de748e3c7fc9fa2f4dc1888bd")
+    @Headers("Authorization: Bearer pat0h7EQw0GwMJ7G8.a0e83d2a8caba436893708229e3183754b278b16e537c339b76df09fb37af951")
     @GET("user")
     Call<AirtableResponse> getUser(@Query("filterByFormula") String filter);
-    @Headers({"Authorization: Bearer pat0h7EQw0GwMJ7G8.08464c93c7705eff3069e37f7a7749ba3f95cd0de748e3c7fc9fa2f4dc1888bd",
+    @Headers({"Authorization: Bearer pat0h7EQw0GwMJ7G8.a0e83d2a8caba436893708229e3183754b278b16e537c339b76df09fb37af951",
             "Content-Type: application/json"})
     @POST("user")
     Call<AirtableResponse> createUser(@Body AirtableUser user);
