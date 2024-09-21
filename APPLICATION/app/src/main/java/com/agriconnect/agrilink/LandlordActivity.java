@@ -36,7 +36,7 @@ public class LandlordActivity extends AppCompatActivity {
         profile = findViewById(R.id.list6);
 
         scrop.setOnClickListener(v -> {
-            intent = new Intent(LandlordActivity.this, SellCropActivity.class);
+            intent = new Intent(LandlordActivity.this, PostjobActivity.class);
             startActivity(intent);
         });
         gethire.setOnClickListener(v -> {

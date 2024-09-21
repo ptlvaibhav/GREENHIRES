@@ -7,12 +7,12 @@
         </shape>
     </item>
     <item
-        android:top="30dp"
-        android:bottom="30dp"
-        android:right="30dp"
-        android:left="30dp">
+        android:top="10dp"
+        android:bottom="10dp"
+        android:right="10dp"
+        android:left="10dp">
         <bitmap
-            android:src="@drawable/digging"
+            android:src="@drawable/postjob"
             android:gravity="center" />
     </item>
 </layer-list>

@@ -44,6 +44,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation ("com.intuit.sdp:sdp-android:1.1.1")
     implementation("androidx.cardview:cardview:1.0.0")
     // Add the Retrofit library
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
