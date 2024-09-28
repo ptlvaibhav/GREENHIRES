@@ -46,6 +46,11 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation ("com.intuit.sdp:sdp-android:1.1.1")
     implementation("androidx.cardview:cardview:1.0.0")
+    //AWS
+//    implementation ("com.amazonaws:aws-android-sdk-core:2.22.0")
+//    implementation ("com.amazonaws:aws-android-sdk-dynamodb:2.22.0")
+//    implementation ("com.amazonaws:aws-android-sdk-auth-userpools:2.22.0")
+
     // Add the Retrofit library
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
