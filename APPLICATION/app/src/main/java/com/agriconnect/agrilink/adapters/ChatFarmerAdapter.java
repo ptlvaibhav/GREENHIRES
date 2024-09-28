@@ -23,7 +23,7 @@ public class ChatFarmerAdapter extends RecyclerView.Adapter<ChatFarmerAdapter.Fa
     @NonNull
     @Override
     public FarmerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_farmer, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chatusers_list, parent, false);
         return new FarmerViewHolder(view);
     }
 
