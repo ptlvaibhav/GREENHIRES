@@ -8,7 +8,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.agriconnect.agrilink.fragments.FarmerFragment;
-import com.agriconnect.agrilink.fragments.IndustriesFragment;
+import com.agriconnect.agrilink.fragments.IndustryFragment;
 import com.agriconnect.agrilink.fragments.LandlordFragment;
 import com.agriconnect.agrilink.fragments.MerchantFragment;
 
@@ -33,7 +33,7 @@ public class ChatViewPagerAdapter extends FragmentStateAdapter {
             case 2:
                 return new LandlordFragment();
             case 3:
-                return new IndustriesFragment();
+                return new IndustryFragment();
             default:
                 return new FarmerFragment();
         }

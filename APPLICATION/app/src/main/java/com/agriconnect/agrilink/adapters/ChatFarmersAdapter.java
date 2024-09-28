@@ -12,11 +12,11 @@ import com.agriconnect.agrilink.R;
 
 import java.util.List;
 
-public class ChatFarmerAdapter extends RecyclerView.Adapter<ChatFarmerAdapter.FarmerViewHolder> {
+public class ChatFarmersAdapter extends RecyclerView.Adapter<ChatFarmersAdapter.FarmerViewHolder> {
 
     private List<AirtableResponse.UserRecord> farmerList;
 
-    public ChatFarmerAdapter(List<AirtableResponse.UserRecord> farmerList) {
+    public ChatFarmersAdapter(List<AirtableResponse.UserRecord> farmerList) {
         this.farmerList = farmerList;
     }
 

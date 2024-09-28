@@ -23,7 +23,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class IndustriesFragment extends Fragment {
+public class IndustryFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private com.agriconnect.agrilink.adapters.ChatIndustriesAdapter chatindustriesAdapter;

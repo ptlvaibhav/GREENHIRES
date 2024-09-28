@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.agriconnect.agrilink.AirTableApiService;
 import com.agriconnect.agrilink.AirtableResponse;
 import com.agriconnect.agrilink.R;
-import com.agriconnect.agrilink.adapters.ChatFarmerAdapter;
+import com.agriconnect.agrilink.adapters.ChatFarmersAdapter;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class FarmerFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private com.agriconnect.agrilink.adapters.ChatFarmerAdapter chatfarmerAdapter;
+    private ChatFarmersAdapter chatfarmerAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,7 +58,7 @@ public class FarmerFragment extends Fragment {
             public void onResponse(Call<AirtableResponse> call, Response<AirtableResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     List<AirtableResponse.UserRecord> farmerList = response.body().getRecords();
-                    chatfarmerAdapter = new ChatFarmerAdapter(farmerList);
+                    chatfarmerAdapter = new ChatFarmersAdapter(farmerList);
                     recyclerView.setAdapter(chatfarmerAdapter);
                 } else {
                     Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
