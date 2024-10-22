@@ -18,12 +18,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 public class Login extends AppCompatActivity {
 
     private EditText email_Phnno, passwd;
@@ -55,23 +49,15 @@ public class Login extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("users");
         sessionManager = new SessionManager(this);
-        if (sessionManager.isLoggedIn()){
-            String role = sessionManager.getRole();
+
+        // Check if user is already logged in
+        if (sessionManager.isLoggedIn()) {
             String userId = sessionManager.getUserId();
-            fetchUserNameAndNavigate(userId,role);
+            String role = sessionManager.getRole();
+            navigateToRoleSpecificActivity(userId, role);
         }
+
         loginbtn.setOnClickListener(v -> loginUser());
-        /*{
-            String userName = email_Phnno.getText().toString().trim();
-            String password = passwd.getText().toString().trim();
-
-            if (userName.isEmpty() || password.isEmpty()) {
-                Toast.makeText(getApplicationContext(), "Please enter both email and password", Toast.LENGTH_SHORT).show();
-            } else {
-                login(userName, password);
-            }
-        });*/
-
         forgetpasswd.setOnClickListener(v -> {
             intent = new Intent(Login.this, ForgotPassActivity.class);
             startActivity(intent);
@@ -89,97 +75,64 @@ public class Login extends AppCompatActivity {
 
         if (userName.isEmpty() || password.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Please enter both email and password", Toast.LENGTH_SHORT).show();
-        } else {
-            databaseReference.orderByChild("email").equalTo(userName).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot snapshot) {
-                    if (snapshot.exists()) {
-                        for (DataSnapshot userSnapshot : snapshot.getChildren()) {
-                            fireUser user = userSnapshot.getValue(fireUser.class);
-                            if (user != null) {
-                                if (user.getPassword().equals(password)) {
-                                    // Save session
-                                    sessionManager.createLoginSession(userSnapshot.getKey(), user.getRole());
+            return;
+        }
 
-                                    // Store user details to the Realtime Database
-                                    storeUserDataToRealtimeDatabase(userSnapshot.getKey(), user);
+        progressDialog.show();
 
-                                    fetchUserNameAndNavigate(userSnapshot.getKey(), user.getRole());
-                                } else {
-                                    Toast.makeText(Login.this, "Incorrect password.", Toast.LENGTH_SHORT).show();
-                                }
+        databaseReference.orderByChild("email").equalTo(userName).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                progressDialog.dismiss();
+                if (snapshot.exists()) {
+                    for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+                        fireUser user = userSnapshot.getValue(fireUser.class);
+                        if (user != null) {
+                            if (user.getPassword().equals(password)) {
+                                sessionManager.createLoginSession(userSnapshot.getKey(), user.getRole());
+                                navigateToRoleSpecificActivity(userSnapshot.getKey(), user.getRole());
+                            } else {
+                                Toast.makeText(Login.this, "Incorrect password.", Toast.LENGTH_SHORT).show();
                             }
                         }
-                    } else {
-                        Toast.makeText(Login.this, "Email not registered.", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(Login.this, "Database Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-    }
-
-    // Method to store user data in the Realtime Database
-    private void storeUserDataToRealtimeDatabase(String userId, fireUser user) {
-        databaseReference.child(userId).setValue(user)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(Login.this, "User data stored successfully!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(Login.this, "Failed to store user data.", Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-
-    private void fetchUserNameAndNavigate(String userId,String role) {
-        databaseReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    fireUser user = snapshot.getValue(fireUser.class);
-                    if (user != null) {
-                        String name = user.getName(); // Assuming 'name' is the field
-                        navigateToHome(role, name);
                     }
                 } else {
-                    navigateToHome(role, "User");
+                    Toast.makeText(Login.this, "Email not registered.", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(Login.this, "Failed to fetch username: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                Toast.makeText(Login.this, "Database Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
-    private void navigateToHome(String role, String name) {
+
+    private void navigateToRoleSpecificActivity(String userId, String role) {
         Intent intent;
         switch (role) {
             case "Farmer":
                 intent = new Intent(Login.this, FarmerActivity.class);
                 break;
-            case "Merchant":
-                intent = new Intent(Login.this, MerchantActivity.class);
-                break;
             case "Landlord":
                 intent = new Intent(Login.this, LandlordActivity.class);
+                break;
+            case "Merchant":
+                intent = new Intent(Login.this, MerchantActivity.class);
                 break;
             case "Industry":
                 intent = new Intent(Login.this, IndustryActivity.class);
                 break;
             default:
-                intent = new Intent(Login.this, null);
-                break;
+                Toast.makeText(Login.this, "Invalid user role", Toast.LENGTH_SHORT).show();
+                return;
         }
-        intent.putExtra("username", name);
         startActivity(intent);
         finish();
     }
 }
+
 
 
 
