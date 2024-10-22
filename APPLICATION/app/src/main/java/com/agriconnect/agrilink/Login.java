@@ -1,14 +1,22 @@
 package com.agriconnect.agrilink;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
@@ -21,23 +29,39 @@ public class Login extends AppCompatActivity {
     private EditText email_Phnno, passwd;
     private Button loginbtn;
     private TextView forgetpasswd, signup;
-    private SharedPreferences preference;
     private Intent intent;
+    private FirebaseAuth auth;
+    private DatabaseReference databaseReference;
+    private SessionManager sessionManager;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please Wait...");
+        progressDialog.setCancelable(false);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         email_Phnno = findViewById(R.id.Login_Unme);
         passwd = findViewById(R.id.Login_Upas);
         loginbtn = findViewById(R.id.loginbtn);
         forgetpasswd = findViewById(R.id.Login_forgot);
         signup = findViewById(R.id.Login_signup);
-
-        preference = getSharedPreferences("User_details", MODE_PRIVATE);
-
-        loginbtn.setOnClickListener(v -> {
+        auth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference("users");
+        sessionManager = new SessionManager(this);
+        if (sessionManager.isLoggedIn()){
+            String role = sessionManager.getRole();
+            String userId = sessionManager.getUserId();
+            fetchUserNameAndNavigate(userId,role);
+        }
+        loginbtn.setOnClickListener(v -> loginUser());
+        /*{
             String userName = email_Phnno.getText().toString().trim();
             String password = passwd.getText().toString().trim();
 
@@ -46,7 +70,7 @@ public class Login extends AppCompatActivity {
             } else {
                 login(userName, password);
             }
-        });
+        });*/
 
         forgetpasswd.setOnClickListener(v -> {
             intent = new Intent(Login.this, ForgotPassActivity.class);
@@ -59,7 +83,107 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    private void login(String userName, String password) {
+    private void loginUser() {
+        String userName = email_Phnno.getText().toString().trim();
+        String password = passwd.getText().toString().trim();
+
+        if (userName.isEmpty() || password.isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Please enter both email and password", Toast.LENGTH_SHORT).show();
+        } else {
+            databaseReference.orderByChild("email").equalTo(userName).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+                            fireUser user = userSnapshot.getValue(fireUser.class);
+                            if (user != null) {
+                                if (user.getPassword().equals(password)) {
+                                    // Save session
+                                    sessionManager.createLoginSession(userSnapshot.getKey(), user.getRole());
+
+                                    // Store user details to the Realtime Database
+                                    storeUserDataToRealtimeDatabase(userSnapshot.getKey(), user);
+
+                                    fetchUserNameAndNavigate(userSnapshot.getKey(), user.getRole());
+                                } else {
+                                    Toast.makeText(Login.this, "Incorrect password.", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+                    } else {
+                        Toast.makeText(Login.this, "Email not registered.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(Login.this, "Database Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
+
+    // Method to store user data in the Realtime Database
+    private void storeUserDataToRealtimeDatabase(String userId, fireUser user) {
+        databaseReference.child(userId).setValue(user)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(Login.this, "User data stored successfully!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(Login.this, "Failed to store user data.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void fetchUserNameAndNavigate(String userId,String role) {
+        databaseReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    fireUser user = snapshot.getValue(fireUser.class);
+                    if (user != null) {
+                        String name = user.getName(); // Assuming 'name' is the field
+                        navigateToHome(role, name);
+                    }
+                } else {
+                    navigateToHome(role, "User");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(Login.this, "Failed to fetch username: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void navigateToHome(String role, String name) {
+        Intent intent;
+        switch (role) {
+            case "Farmer":
+                intent = new Intent(Login.this, FarmerActivity.class);
+                break;
+            case "Merchant":
+                intent = new Intent(Login.this, MerchantActivity.class);
+                break;
+            case "Landlord":
+                intent = new Intent(Login.this, LandlordActivity.class);
+                break;
+            case "Industry":
+                intent = new Intent(Login.this, IndustryActivity.class);
+                break;
+            default:
+                intent = new Intent(Login.this, null);
+                break;
+        }
+        intent.putExtra("username", name);
+        startActivity(intent);
+        finish();
+    }
+}
+
+
+
+    /*private void login(String userName, String password) {
         AirTableApiService service = RetrofitClient.getClient().create(AirTableApiService.class);
         String filter = "AND({Email} = '" + userName + "', {Password} = '" + password + "')";
         Call<AirtableResponse> call = service.getUser(filter);
@@ -125,5 +249,4 @@ public class Login extends AppCompatActivity {
             }
 
         });
-    }
-}
+    }*/

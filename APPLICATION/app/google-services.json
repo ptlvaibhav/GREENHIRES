@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "1084646672769",
-    "project_id": "agrilink-register-db",
-    "storage_bucket": "agrilink-register-db.appspot.com"
+    "project_number": "495489499484",
+    "firebase_url": "https://agrilink-db-default-rtdb.firebaseio.com",
+    "project_id": "agrilink-db",
+    "storage_bucket": "agrilink-db.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1084646672769:android:7e52ea937f4ccb6865c080",
+        "mobilesdk_app_id": "1:495489499484:android:5ad932036ef5ea90adc199",
         "android_client_info": {
           "package_name": "com.agriconnect.agrilink"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAKe5WfKxYgdFhABBcHX4m4G3ltgaAMDfo"
+          "current_key": "AIzaSyBUXYT3VhOJXE9Q0roX-JKbFd3o76pCqzA"
         }
       ],
       "services": {

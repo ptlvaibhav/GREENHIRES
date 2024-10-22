@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -41,11 +42,20 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.firebase.database)
+    implementation(libs.firebase.storage)
+    implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation ("com.intuit.sdp:sdp-android:1.1.1")
     implementation("androidx.cardview:cardview:1.0.0")
+    //response app mate
+    implementation("com.intuit.sdp:sdp-android:1.1.0")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation("com.squareup.picasso:picasso:2.8")
+    // BCrypt for password hashing
+    implementation ("at.favre.lib:bcrypt:0.9.0")
+
     //AWS
 //    implementation ("com.amazonaws:aws-android-sdk-core:2.22.0")
 //    implementation ("com.amazonaws:aws-android-sdk-dynamodb:2.22.0")

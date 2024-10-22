@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +15,9 @@ public class FarmerActivity extends AppCompatActivity
     private ImageView menu,logout,scrop,gethire,aplytender, chats,setng, profile;
     private Intent intent;
     private SharedPreferences sp;
+    private TextView helotxt;
+    private SessionManager sessionManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,15 +25,22 @@ public class FarmerActivity extends AppCompatActivity
         setContentView(R.layout.activity_farmer);
         //initalization of the elements
         menu = findViewById(R.id.menu);
-        searchBar = findViewById(R.id.searchBar);
+//        searchBar = findViewById(R.id.searchBar);
         logout = findViewById(R.id.log_out);
+        helotxt = findViewById(R.id.hellotxt);
         scrop = findViewById(R.id.list1);
         gethire = findViewById(R.id.list2);
         aplytender = findViewById(R.id.list3);
         chats = findViewById(R.id.list4);
         setng = findViewById(R.id.list5);
         profile = findViewById(R.id.list6);
+        sessionManager = new SessionManager(this);
 
+        String username = getIntent().getStringExtra("username");
+        if (username != null)
+            helotxt.setText("Hello, "+ username);
+
+        logout.setOnClickListener( v -> sessionManager.logout());
         scrop.setOnClickListener(v -> {
             intent = new Intent(FarmerActivity.this, SellCropActivity.class);
             startActivity(intent);
