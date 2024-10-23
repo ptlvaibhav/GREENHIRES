@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="LOGO_BG">#f8f9f1</color>
+    <color name="Pista_clr">#6D9773</color>
+    <color name="Pista_clr2">#E1FAD8</color>
+    <color name="mehndhi_clr">#99a333</color>
+    <color name="drkgreen_clr">#16332a</color>
+    <color name="skin_clr">#f3d79f</color>
+    <color name="yellow">#FFBA00</color>
+    <color name="brwn">#BB8A52</color>
+    <color name="lightgreenbg">#F5FDF2</color>
+    <color name="light_white">#F3F3F3</color>
+    <color name="grey">#A8A5A5</color>
+</resources>

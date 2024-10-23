@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LoginActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Pista_clr">
+    <ImageView
+        android:id="@+id/Login_Logo"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/logo"
+        android:background="@drawable/round_image"
+        android:scaleType="centerCrop"
+        android:contentDescription="Login_desc"/>
+
+    <RelativeLayout
+        android:id="@+id/rectangular_container"
+        android:layout_width="match_parent"
+        android:layout_height="800dp"
+        android:layout_marginTop="250dp"
+        android:background="@drawable/rectangle_container"
+        android:padding="40dp">
+
+        <TextView
+            android:id="@+id/loginTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Login"
+            android:textSize="40sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/Login_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/loginTxt"
+            android:text="Sign in to continue"
+            android:layout_centerHorizontal="true"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/Login_Uname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Login_desc"
+            android:layout_marginTop="30dp"
+            android:text="Username"
+            android:textSize="13sp"/>
+
+        <EditText
+            android:id="@+id/editTexLogEmail"
+            android:layout_width="420dp"
+            android:layout_height="60dp"
+            android:ems="18"
+            android:layout_marginTop="3dp"
+            android:hint="Email"
+            android:layout_below="@id/Login_Uname"
+            android:inputType="text"
+            android:autofillHints="emailAddress"
+            android:background="@drawable/edittext_filled_bg"/>
+
+        <TextView
+            android:id="@+id/Login_Upass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTexLogEmail"
+            android:layout_marginTop="5dp"
+            android:text="Password"
+            android:textSize="13sp"/>
+
+        <EditText
+            android:id="@+id/editTextLogPassword"
+            android:layout_width="420dp"
+            android:layout_height="60dp"
+            android:ems="18"
+            android:layout_marginTop="3dp"
+            android:hint="Password"
+            android:layout_below="@id/Login_Upass"
+            android:inputType="textPassword"
+            android:autofillHints="emailAddress"
+            android:background="@drawable/edittext_filled_bg" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/logbutton"
+            android:layout_width="420dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:padding="10dp"
+            android:text="Login"
+            android:textStyle="bold"
+            android:background="@drawable/loginbtn"
+            android:layout_below="@id/editTextLogPassword" />
+
+        <TextView
+            android:id="@+id/Login_forgot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/logbutton"
+            android:layout_marginTop="30dp"
+            android:text="Need an account ?"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/logsignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/Login_forgot"
+            android:layout_marginTop="5dp"
+            android:text="signup"
+            android:textSize="13sp" />
+
+    </RelativeLayout>
+</RelativeLayout>
